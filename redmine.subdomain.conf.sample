@@ -10,8 +10,13 @@ server {
 
     client_max_body_size 0;
 
-    access_log /var/log/nginx/redmine-access.log;
-    error_log /var/log/nginx/redmine-error.log;
+    ## Volatile logs (deleted with container)
+    #access_log /var/log/nginx/redmine-access.log;
+    #error_log /var/log/nginx/redmine-error.log;
+    ## Permanent logs
+    access_log /config/log/nginx/redmine_access.log;
+    error_log /config/log/nginx/redmine_error.log;
+
 
     location / {
         include /config/nginx/proxy.conf;
